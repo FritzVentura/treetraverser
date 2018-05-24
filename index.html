@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tree traverser</title>
+</head>
+<body>
+    <header id="top">
+        <nav>
+            <a href="#top">top</a>
+            <a href="#introduction">Introduction</a>
+            <a href="#requirements">Requirements</a>
+            <a href="#suggest">Suggested subtasks</a>
+            <a href="#additional">Additional (optional) features</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="introduction">
+            <h2>Tree traverser</h2>
+            <p>Your first task is to build a simple <b>tree traverser</b>, a piece of code that walks through a tree of HTML elements, and writes info about them to the console.<br>
+            Take advantage of the fact that everything is an <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a>, maybe even an <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement">HTMLElement</a>, and use the corresponding .children method to get child Elements (rather than .childNodes, that gets you, well, nodes...)</p>
+        </section>
+
+        <section id="requirements">
+
+            <h2>Requirements</h2>
+            <p>The finished code must fullfill these requirements:</p>
+            <ul>
+                <li>All JavaScript must be placed in the file <code>tree-traverser.js</code></li>
+                <li>That js-file must be included in this html-file (that you are looking at right now)</li>
+                <li>Besides adding the script-tag, you are <strong>not</strong> to modify the HTML in any way</li>
+                <li>Your code must output to the console (log)</li>
+                <li>The output must include:
+                <ul>
+                    <li>The tag name of each HTML element in the order they appear - this means children before siblings!</li>
+                    <li>The attributes (name &amp; value) of each HTML element</li>
+                </ul>
+                </li>
+            </ul>
+        </section>
+            
+        <section id="suggest">
+            <h2>Suggested sub-tasks</h2>
+            <p>I suggest that you solve the assignment, by breaking it into these sub-tasks, and doing them in order:</p>
+            <ol>
+                <li>Make the tree-traverser.js file, and include it in the HTML.</li>
+                <li>Make a function called <code>traverse</code>, and let it be called the instant the DOM is ready.</li>
+                <li>In the <code>traverse</code> function, find the document Element, and console.log that.</li>
+                <li>Make a separate function to display info about an element, and let that do the console-logging, rather than doing it in <code>traverse</code> - pass the document element to that function</li>
+                <li>Make the display-function check if the element has children, and loop over them (remember that most DOM elements have weird lists, so you'll need to convert into an array). Console.log the children</li>
+                <li>Remember that you already have a function for displaying info about elements, and call that function for each child, rather than console.log in the loop!</li>
+                <li>In the code, before checking for children, check for attributes, and loop over them, and log each to the console</li>
+            </ol>
+        </section>
+
+        <section id="additional">
+            
+            <h2>Additional features</h2>
+            <p>If you feel like improving your solution, or want to prepare for the next assignment, you can do some of these additions:</p>
+            <ol>
+                <li>Build HTML-like strings to console-log, so it looks like HTML-code</li>
+                <li>Return the string, rather than console.logging it (that requires that you return a string from the display-function, and add the result to another string when calling the function)
+                <li>Don't let the display function console.log the string, but rather return it, and let the <code>traverse</code> function display it. Note that you have to include the returned string from when the display function is called by itself.</li>
+                <li>If you are really ambitious, add indentation, so that each child element is indented two spaces from its parent. You are going to need a global counter-variable for the current "indentation-level"</li>
+                <li>If you are really, really ambitious, add end-tags to the output aswell - but only for those HTML-elements that has end-tags (you can't ask the DOM if there is an end-tag, there are only nodes).</li>
+            </ol>
+            <hr>
+            <h2>Extreme:</h2>
+            <p>It isn't directly possible to get the text of an element, without including all the childElements - eg. if you wanted the textContent of this exact <code>&lt;p&gt;</code> you would also get the <b>p</b> inside the &lt;code&gt; element - but you would also get the child &lt;code&gt; elements, and their contents once again ... <br>
+            Experiment with .textContent and .innerHTML and see what happens.</p>
+            <p>But if you really want the text inside each element, and not the text inside the childElements, then you need to look at TextNodes - and you basically have to create a new tree-traverser that uses Nodes rather than Elements.<br>
+            It can be a fun and challenging task - but don't modify the tree-traverser, make a new <code>node-traverser.js</code> file, and build it in the same way, but using nodes. And check each nodes nodeType, to see if it is a TextNode or an Element!</p>
+            <p>Enjoy!</p>
+            <p><i>I would love to see some experiments on this - didn't get it to work myself, so you can only impress me!</i></p>
+            
+        </section>
+        
+    </main>
+    <script src="tree-traverser-advanced.js"></script>
+</body>
+</html>
